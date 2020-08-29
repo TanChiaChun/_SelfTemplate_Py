@@ -1,3 +1,5 @@
+Set-Location (Get-Location | Split-Path)
+
 # Read input
 $dest_dir = Read-Host "Input destination folder"
 
@@ -23,12 +25,15 @@ if (Test-Path -Path "$dest_dir\.git") {
 if (-not (Test-Path -Path "$dest_dir\requirements") ) {
     New-Item -Path $dest_dir -Name "requirements" -ItemType "directory"
 }
+if (-not (Test-Path -Path "$dest_dir\ps_scripts") ) {
+    New-Item -Path $dest_dir -Name "ps_scripts" -ItemType "directory"
+}
 
 # Copy file
 Copy-Item "*.py" -Destination $dest_dir
 Copy-Item "requirements\requirements*.txt" -Destination "$dest_dir\requirements"
 Copy-Item ".gitignore" -Destination $dest_dir
-Copy-Item "*.ps1" -Destination $dest_dir
+Copy-Item "ps_scripts\*.ps1" -Destination "$dest_dir\ps_scripts"
 
 # Copy folder
 Copy-Item -Path ".git" -Destination $dest_dir -Recurse
@@ -37,4 +42,4 @@ Copy-Item -Path ".git" -Destination $dest_dir -Recurse
 $temp_folder = Get-Item $dest_dir\.git
 $temp_folder.Attributes = "Hidden"
 
-Read-Host "Completed! Press any key to continue..."
+Read-Host "Completed!`nPress any key to continue..."
