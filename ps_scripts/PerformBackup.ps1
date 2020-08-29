@@ -1,21 +1,11 @@
+# Move up 1 directory level
 Set-Location (Get-Location | Split-Path)
 
 # Read input
 $dest_dir = Read-Host "Input destination folder"
 
-# Check if file exist, rename if yes
-if (Test-Path "requirements\requirements.txt") {
-    $cur_date = Get-Date -Format "yyyy-MM-ddTHHmm"
-    Rename-Item -Path "requirements\requirements.txt" -NewName "requirements_$cur_date.txt"
-}
-
-# Check if folder exist, create if no
-if (-not (Test-Path -Path "requirements") ) {
-    New-Item -Name "requirements" -ItemType "directory"
-}
-
-# Run Python pip for requirements.txt
-venv\Scripts\python -m pip freeze > requirements\requirements.txt
+# Generate Python requirements
+ps_scripts\Get_PyRequirements.ps1 True
 
 # Check if destination folder exist, delete if yes
 if (Test-Path -Path "$dest_dir\.git") {

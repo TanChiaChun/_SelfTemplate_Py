@@ -1,3 +1,4 @@
+# Move up 1 directory level
 Set-Location (Get-Location | Split-Path)
 
 function My-Clear-Folder {
@@ -26,7 +27,7 @@ if (Test-Path "pyinstaller\*.exe") {
     Remove-Item "pyinstaller\*.exe"
 }
 
-# Read input
+# Set project name
 $proj_name = Split-Path (Get-Location) -Leaf
 $script_name = "$proj_name.py"
 if (-not (Test-Path $script_name) ) {
