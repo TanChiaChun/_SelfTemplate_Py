@@ -52,8 +52,8 @@ class MyConfig:
     
     def create_file_specific(self):
         self.my_config["Heading1"] = {}
-        self.my_config["Outlook"]["switch1"] = "False"
-        self.my_config["Outlook"]["var1"] = "String"
+        self.my_config["Heading1"]["switch1"] = "False"
+        self.my_config["Heading1"]["var1"] = "String"
 
     def create_file(self):
         self.my_config["App"] = {}
