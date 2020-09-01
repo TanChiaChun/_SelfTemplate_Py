@@ -11,6 +11,7 @@ class MainException:
     
     def handle_exception(self, log_message):
         complete_message = "App run fail!"
-        self.logger.error(log_message + "\n" + complete_message + self.log_string)
+        self.logger.error(log_message, exc_info=True)
+        self.logger.error(complete_message + self.log_string)
         ctypes.windll.user32.MessageBoxW(0, complete_message, self.project_name, 0) # Last 0 for OK
         sys.exit()
