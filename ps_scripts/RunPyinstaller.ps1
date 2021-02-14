@@ -34,7 +34,10 @@ if (-not (Test-Path $script_name) ) {
     $proj_name = Read-Host "Input project name"
     $script_name = "$proj_name.py"
 }
-$proj_version = Read-Host "Input project version"
+$proj_version = git describe
+if (-not $proj_version) {
+    $proj_version = Read-Host "Input project version"
+}
 $exe_name = "$proj_name" + "_v" + "$proj_version.exe"
 
 # Check if folder exist, create if no
