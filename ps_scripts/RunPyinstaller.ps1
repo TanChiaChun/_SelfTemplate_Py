@@ -2,7 +2,7 @@
 Set-Location (Get-Location | Split-Path)
 
 function My-Clear-Folder {
-    # Check if folder exist, delete if yes
+    # Check if folders exist, delete if yes
     if (Test-Path -Path "__pycache__") {
         Remove-Item "__pycache__" -Recurse
     }
@@ -13,7 +13,7 @@ function My-Clear-Folder {
         Remove-Item "pyinstaller\dist" -Recurse
     }
 
-    # Check if file exist, delete if yes
+    # Check if files exist, delete if yes
     if (Test-Path "pyinstaller\*.spec") {
         Remove-Item "pyinstaller\*.spec"
     }
@@ -22,12 +22,12 @@ function My-Clear-Folder {
 # Run My-Clear-Folder function
 My-Clear-Folder
 
-# Check if file exist, delete if yes
+# Check if files exist, delete if yes
 if (Test-Path "pyinstaller\*.exe") {
     Remove-Item "pyinstaller\*.exe"
 }
 
-# Set project name
+# Set exe name
 $proj_name = Split-Path (Get-Location) -Leaf
 $script_name = "$proj_name.py"
 if (-not (Test-Path $script_name) ) {
@@ -40,12 +40,12 @@ if (-not $proj_version) {
 }
 $exe_name = "$proj_name" + "_v" + "$proj_version.exe"
 
-# Check if folder exist, create if no
+# Check if folders exist, create if no
 if (-not (Test-Path -Path "pyinstaller") ) {
     New-Item -Name "pyinstaller" -ItemType "directory"
 }
 
-# Check if file exist, create if no
+# Check if files exist, create if no
 if (-not (Test-Path "pyinstaller\python-icon.ico") ) {
     $ico_source = Get-Location | Split-Path
     if (-not (Test-Path -Path "$ico_source\python-icon.ico") ) {
