@@ -6,12 +6,15 @@ from urllib.request import urlopen
 from datetime import datetime
 from time import sleep
 
+##################################################
+# Variables
+##################################################
 logger = logging.getLogger("my_logger")
 LOG_END = "\n-------------------------"
 
-# ##################################################
-# # Functions
-# ##################################################
+##################################################
+# Functions
+##################################################
 def initialise_app(project_name, log_level="INFO"):
     # Create directories
     os.makedirs("data", exist_ok=True)

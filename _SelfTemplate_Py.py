@@ -26,7 +26,9 @@ logger = logging.getLogger("my_logger")
 # if env_var1 == None or env_var2 == None:
 #     handle_exception("Missing environment variables!")
 
-# Declare variables
+##################################################
+# Variables
+##################################################
 
 
 ##################################################
