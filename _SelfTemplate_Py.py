@@ -4,7 +4,7 @@ import argparse
 import logging
 
 # Import from modules
-from MyCls import initialise_app, finalise_app, handle_exception
+from MyMod import del_file, initialise_app, finalise_app, handle_exception
 
 # Initialise project
 CURR_DIR, CURR_FILE = os.path.split(__file__)
