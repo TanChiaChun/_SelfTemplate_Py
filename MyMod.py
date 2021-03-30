@@ -3,7 +3,6 @@ import os
 from sys import stdout, exit
 import logging
 from urllib.request import urlopen
-from datetime import datetime
 from time import sleep
 
 ##################################################
